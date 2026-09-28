@@ -1,15 +1,15 @@
 # Lab 2 results — sealed core
 
-Name:  REPLACE THIS LINE
-Student number:  REPLACE THIS LINE
-Lab section:  REPLACE THIS LINE
-Core:  REPLACE THIS LINE — the letter on BRIEF.md
-Machine:  REPLACE THIS LINE
-Cores:  REPLACE THIS LINE — an integer
+Name:  Rares-Casian David
+Student number:  91119545
+Lab section:  L01
+Core:  A — the letter on BRIEF.md
+Machine:  Code Space 
+Cores:  4 — an integer
 
 ## Tools and sources
 
-Tools and sources: REPLACE THIS LINE
+Tools and sources: None
 
 > Mandatory, even if it says "none". **No AI in the lab, at all** — see the
 > README. Missing declaration: zero until you supply one. False one: misconduct.
@@ -19,13 +19,16 @@ Tools and sources: REPLACE THIS LINE
 Three or more runs of `./bar given`, including one thread:
 
 ```
+mode=given threads=1 rounds=2000 bad=0 firstbad=-1 checksum=ok correct=yes deadlock=no time=0.0017 cpu=0.0017
+mode=given threads=1 rounds=2000 bad=0 firstbad=-1 checksum=ok correct=yes deadlock=no time=0.0016 cpu=0.0017
+mode=given threads=1 rounds=2000 bad=0 firstbad=-1 checksum=ok correct=yes deadlock=no time=0.0017 cpu=0.0017
 ```
 
 **S2.1** Name the mechanism: which claim in `given.c`'s header is false, and
 what is actually happening? State the barrier's invariant and say which half of
 it this code does not keep.
 
-REPLACE THIS LINE
+
 
 **S2.2** Prove it, in the form your `BRIEF.md` requires.
 

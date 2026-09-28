@@ -28,11 +28,12 @@ mode=given threads=1 rounds=2000 bad=0 firstbad=-1 checksum=ok correct=yes deadl
 what is actually happening? State the barrier's invariant and say which half of
 it this code does not keep.
 
-
+It cant not be reused past the first round of wait. This is due to the counter never being reset 
+causeing threads in the next round to skip the barrier entirely resulting in a wrong oputput.
 
 **S2.2** Prove it, in the form your `BRIEF.md` requires.
 
-REPLACE THIS LINE
+
 
 **S2.3** Minimality: what breaks if you do less, what it costs if you do more.
 

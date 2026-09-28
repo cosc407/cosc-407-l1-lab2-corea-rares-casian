@@ -154,7 +154,11 @@ Test(fixed, reusable_across_several_rounds, .timeout = BAR_TIMEOUT)
  * create()/wait()/destroy() still have to work. */
 Test(fixed, single_thread, .timeout = BAR_TIMEOUT)
 {
-    cr_assert_fail("TODO: write this case -- see the worked example above");
+    int n = 1;
+    int rounds = 20;
+    long long expected = rounds * (n * (n + 1) / 2);
+    cr_assert_eq(run_single_thread(&bar_fixed, n, rounds), expected ,"single_thread worked");
+
 }
 
 /* TODO: more_threads_than_cores -- pick an nthreads well above what this
@@ -162,7 +166,12 @@ Test(fixed, single_thread, .timeout = BAR_TIMEOUT)
  * the case barrier.h's comment on MAX_THREADS=128 exists for. */
 Test(fixed, more_threads_than_cores, .timeout = BAR_TIMEOUT_SLOW)
 {
-    cr_assert_fail("TODO: write this case -- see the worked example above");
+  
+    int n = 20;
+    int rounds = 40;
+    long long expected = rounds * (n * (n + 1) / 2);
+    cr_assert_eq(run_single_thread(&bar_fixed, n, rounds), expected , "Worked for multiple cores");
+
 }
 
 /* ------------------------------------------------------------ bar_alt --- */
@@ -185,12 +194,19 @@ Test(alt, reusable_across_several_rounds, .timeout = BAR_TIMEOUT)
  * happen at exactly one thread. It is not the same answer as above. */
 Test(alt, single_thread, .timeout = BAR_TIMEOUT)
 {
-    cr_assert_fail("TODO: write this case -- see the worked example above");
+    void *bar = bar_alt.create(4);
+    int finished = run_reuse_check(&bar_alt, bar, 4);
+    cr_assert_eq(finished, 0, "bar_alt worked on 1 thread");
 }
+
 
 /* TODO: more_threads_than_cores -- same idea as the worked example, at a
  * higher thread count. */
 Test(alt, more_threads_than_cores, .timeout = BAR_TIMEOUT_SLOW)
 {
-    cr_assert_fail("TODO: write this case -- see the worked example above");
+    int n = 10;
+    void *bar = bar_alt.create(n);
+    int finished = expect_stuck(&bar_alt, bar, n);
+    cr_assert_lt(finished, n,
+                 "bar_alt let all 10 threads out -- it isn't supposed to");
 }

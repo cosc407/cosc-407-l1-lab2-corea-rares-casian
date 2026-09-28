@@ -33,6 +33,26 @@ causeing threads in the next round to skip the barrier entirely resulting in a w
 
 **S2.2** Prove it, in the form your `BRIEF.md` requires.
 
+count(c) = 0
+n = 2
+
+thread 1 
+grabs lock 
+c -> 1, c != n, c < n true 
+thread 1 goes to sleep
+wakes ups c < n false
+continues work
+
+
+
+thread 2
+fails to grab lock goes to sleep 
+wakes up grabs lock 
+c = 2, c = n, c < n false 
+unlocks
+continues works
+grabs lock 
+c -> 3, c != n, c < n false 
 
 
 **S2.3** Minimality: what breaks if you do less, what it costs if you do more.
